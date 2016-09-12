@@ -1,0 +1,307 @@
+2016-09-11T22:23:42+03:00 CRIT (2): Fatal Error: 
+ArrayObject Object
+(
+    [storage:ArrayObject:private] => Array
+        (
+            [exception] => Siberian_Wrapper_Sqlite_Exception Object
+                (
+                    [message:protected] => Error with query 'INSERT INTO app_installation (appId,latitude,longitude,timestampGMT,OS,OSVersion,Device,DeviceVersion,deviceUUID) VALUES ('1','','','1473621822','browser','52.0.2743.116','browser','Chrome','')'
+Error: database is locked
+                    [string:Exception:private] => 
+                    [code:protected] => 0
+                    [file:protected] => /var/www/html/siberian_1/lib/Siberian/Wrapper/Sqlite.php
+                    [line:protected] => 135
+                    [trace:Exception:private] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/app/sae/modules/Analytics/Model/Store.php
+                                    [line] => 199
+                                    [function] => query
+                                    [class] => Siberian_Wrapper_Sqlite
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                            [0] => INSERT INTO app_installation (appId,latitude,longitude,timestampGMT,OS,OSVersion,Device,DeviceVersion,deviceUUID) VALUES ('1','','','1473621822','browser','52.0.2743.116','browser','Chrome','')
+                                        )
+
+                                )
+
+                            [1] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/app/sae/modules/Analytics/controllers/Mobile/StoreController.php
+                                    [line] => 13
+                                    [function] => addAppInstallationMetric
+                                    [class] => Analytics_Model_Store
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [OS] => browser
+                                                    [OSVersion] => 52.0.2743.116
+                                                    [Device] => browser
+                                                    [DeviceVersion] => Chrome
+                                                    [deviceUUID] => 
+                                                    [latitude] => 
+                                                    [longitude] => 
+                                                    [appId] => 1
+                                                    [timestampGMT] => 1473621822
+                                                )
+
+                                        )
+
+                                )
+
+                            [2] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/lib/Zend/Controller/Action.php
+                                    [line] => 516
+                                    [function] => installationAction
+                                    [class] => Analytics_Mobile_StoreController
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                        )
+
+                                )
+
+                            [3] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/lib/Zend/Controller/Dispatcher/Standard.php
+                                    [line] => 308
+                                    [function] => dispatch
+                                    [class] => Zend_Controller_Action
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                            [0] => installationAction
+                                        )
+
+                                )
+
+                            [4] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/lib/Zend/Controller/Front.php
+                                    [line] => 954
+                                    [function] => dispatch
+                                    [class] => Zend_Controller_Dispatcher_Standard
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                            [0] => Siberian_Controller_Request_Http Object
+                                                (
+                                                    [_is_application:protected] => 1
+                                                    [_language_code:protected] => 
+                                                    [_force_language_code:protected] => 
+                                                    [_is_native:protected] => 
+                                                    [_use_application_key:protected] => 1
+                                                    [_white_label_editor:protected] => 
+                                                    [_application] => 
+                                                    [_application_key:protected] => 
+                                                    [_ionic_path:protected] => 
+                                                    [_is_installing:protected] => 
+                                                    [_mediaUrl:protected] => 
+                                                    [_paramSources:protected] => Array
+                                                        (
+                                                            [0] => _GET
+                                                            [1] => _POST
+                                                        )
+
+                                                    [_requestUri:protected] => /overview/analytics/mobile_store/installation?sb-token=8lr3gqnba4b3ndqom6t7qj5m11
+                                                    [_baseUrl:protected] => http://192.168.31.128
+                                                    [_basePath:protected] => 
+                                                    [_pathInfo:protected] => /analytics/mobile_store/installation
+                                                    [_params:protected] => Array
+                                                        (
+                                                            [module] => analytics
+                                                            [controller] => mobile_store
+                                                            [action] => installation
+                                                            [error_handler] => ArrayObject Object
+ *RECURSION*
+                                                        )
+
+                                                    [_rawBody:protected] => {"OS":"browser","OSVersion":"52.0.2743.116","Device":"browser","DeviceVersion":"Chrome","deviceUUID":null,"latitude":null,"longitude":null}
+                                                    [_aliases:protected] => Array
+                                                        (
+                                                        )
+
+                                                    [_dispatched:protected] => 1
+                                                    [_module:protected] => Front
+                                                    [_moduleKey:protected] => module
+                                                    [_controller:protected] => error
+                                                    [_controllerKey:protected] => controller
+                                                    [_action:protected] => exception
+                                                    [_actionKey:protected] => action
+                                                )
+
+                                            [1] => Zend_Controller_Response_Http Object
+                                                (
+                                                    [_body:protected] => Array
+                                                        (
+                                                            [default] => 
+                                                        )
+
+                                                    [_exceptions:protected] => Array
+                                                        (
+                                                            [0] => Siberian_Wrapper_Sqlite_Exception Object
+ *RECURSION*
+                                                        )
+
+                                                    [_headers:protected] => Array
+                                                        (
+                                                        )
+
+                                                    [_headersRaw:protected] => Array
+                                                        (
+                                                        )
+
+                                                    [_httpResponseCode:protected] => 500
+                                                    [_isRedirect:protected] => 
+                                                    [_renderExceptions:protected] => 
+                                                    [headersSentThrowsException] => 1
+                                                )
+
+                                        )
+
+                                )
+
+                            [5] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/app/Bootstrap.php
+                                    [line] => 293
+                                    [function] => dispatch
+                                    [class] => Zend_Controller_Front
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                            [0] => Siberian_Controller_Request_Http Object
+                                                (
+                                                    [_is_application:protected] => 1
+                                                    [_language_code:protected] => 
+                                                    [_force_language_code:protected] => 
+                                                    [_is_native:protected] => 
+                                                    [_use_application_key:protected] => 1
+                                                    [_white_label_editor:protected] => 
+                                                    [_application] => 
+                                                    [_application_key:protected] => 
+                                                    [_ionic_path:protected] => 
+                                                    [_is_installing:protected] => 
+                                                    [_mediaUrl:protected] => 
+                                                    [_paramSources:protected] => Array
+                                                        (
+                                                            [0] => _GET
+                                                            [1] => _POST
+                                                        )
+
+                                                    [_requestUri:protected] => /overview/analytics/mobile_store/installation?sb-token=8lr3gqnba4b3ndqom6t7qj5m11
+                                                    [_baseUrl:protected] => http://192.168.31.128
+                                                    [_basePath:protected] => 
+                                                    [_pathInfo:protected] => /analytics/mobile_store/installation
+                                                    [_params:protected] => Array
+                                                        (
+                                                            [module] => analytics
+                                                            [controller] => mobile_store
+                                                            [action] => installation
+                                                            [error_handler] => ArrayObject Object
+ *RECURSION*
+                                                        )
+
+                                                    [_rawBody:protected] => {"OS":"browser","OSVersion":"52.0.2743.116","Device":"browser","DeviceVersion":"Chrome","deviceUUID":null,"latitude":null,"longitude":null}
+                                                    [_aliases:protected] => Array
+                                                        (
+                                                        )
+
+                                                    [_dispatched:protected] => 1
+                                                    [_module:protected] => Front
+                                                    [_moduleKey:protected] => module
+                                                    [_controller:protected] => error
+                                                    [_controllerKey:protected] => controller
+                                                    [_action:protected] => exception
+                                                    [_actionKey:protected] => action
+                                                )
+
+                                        )
+
+                                )
+
+                            [6] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/lib/Zend/Application.php
+                                    [line] => 366
+                                    [function] => run
+                                    [class] => Bootstrap
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                        )
+
+                                )
+
+                            [7] => Array
+                                (
+                                    [file] => /var/www/html/siberian_1/index.php
+                                    [line] => 56
+                                    [function] => run
+                                    [class] => Zend_Application
+                                    [type] => ->
+                                    [args] => Array
+                                        (
+                                        )
+
+                                )
+
+                        )
+
+                    [previous:Exception:private] => 
+                )
+
+            [type] => EXCEPTION_OTHER
+            [request] => Siberian_Controller_Request_Http Object
+                (
+                    [_is_application:protected] => 1
+                    [_language_code:protected] => 
+                    [_force_language_code:protected] => 
+                    [_is_native:protected] => 
+                    [_use_application_key:protected] => 1
+                    [_white_label_editor:protected] => 
+                    [_application] => 
+                    [_application_key:protected] => 
+                    [_ionic_path:protected] => 
+                    [_is_installing:protected] => 
+                    [_mediaUrl:protected] => 
+                    [_paramSources:protected] => Array
+                        (
+                            [0] => _GET
+                            [1] => _POST
+                        )
+
+                    [_requestUri:protected] => /overview/analytics/mobile_store/installation?sb-token=8lr3gqnba4b3ndqom6t7qj5m11
+                    [_baseUrl:protected] => http://192.168.31.128
+                    [_basePath:protected] => 
+                    [_pathInfo:protected] => /analytics/mobile_store/installation
+                    [_params:protected] => Array
+                        (
+                            [module] => analytics
+                            [controller] => mobile_store
+                            [action] => installation
+                        )
+
+                    [_rawBody:protected] => {"OS":"browser","OSVersion":"52.0.2743.116","Device":"browser","DeviceVersion":"Chrome","deviceUUID":null,"latitude":null,"longitude":null}
+                    [_aliases:protected] => Array
+                        (
+                        )
+
+                    [_dispatched:protected] => 1
+                    [_module:protected] => analytics
+                    [_moduleKey:protected] => module
+                    [_controller:protected] => mobile_store
+                    [_controllerKey:protected] => controller
+                    [_action:protected] => installation
+                    [_actionKey:protected] => action
+                )
+
+        )
+
+)
+

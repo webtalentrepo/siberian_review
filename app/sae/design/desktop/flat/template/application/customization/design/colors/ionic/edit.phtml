@@ -1,0 +1,532 @@
+<?php $blocks = $this->getApplication()->getBlocks(); ?>
+<?php $tabbar_block = $this->getApplication()->getBlock('tabbar'); ?>
+<div class="page-content-wrapper">
+    <form id="colorsForm" action="<?php echo $this->getUrl('application/customization_design_colors/save'); ?>" method="post">
+        <div id="colors">
+            <div id="colors_content">
+                <div id="app_colors">
+
+                    <?php foreach($blocks as $block) : ?>
+                    <?php $block_id = (strlen(dechex($block->getId()))==2) ? dechex($block->getId()) : "0".dechex($block->getId()); ?>
+                    <div class="change-overview-content content-color content" data-rel="<?php echo $block->getCode(); ?>" data-name="<?php echo $block->getName(); ?>">
+                        <h3 class="title-editor border-yellow">
+                            <?php echo $block->getName(); ?>
+                        </h3>
+
+                        <?php
+                            $has_childrens = false;
+                            if($block->getChildren()) {
+                                $has_childrens = true;
+                            }
+                            $children = $block->getChildren() ? $block->getChildren() : array($block);
+                        ?>
+
+                        <?php foreach($children as $child) : ?>
+                            <?php $child_id = (strlen(dechex($child->getId()))==2) ? dechex($child->getId()) : "0".dechex($child->getId()); ?>
+                            <?php $child_id = $has_childrens ? $child_id : "00"; ?>
+                            <?php if($child->getParentId()) : ?>
+
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12">
+                                    <h5 class="subtitle capitalize"><?php echo $child->getName(); ?></h5>
+                                </div>
+                            </div>
+
+                            <?php endif; ?>
+
+                            <div class="col-md-12 col-xs-12">
+                                <?php if($child->getColorVariableName()) : ?>
+                                <div class="col-md-3 col-xs-3"><h4 class="text-center"><?php echo $this->_("Text"); ?></h4></div>
+                                <?php endif; ?>
+                                <?php if($child->getBackgroundColorVariableName()) : ?>
+                                <div class="col-md-3 col-xs-3"><h4 class="text-center"><?php echo $this->_("Background"); ?></h4></div>
+                                <?php endif; ?>
+                                <?php if($child->getBorderColorVariableName()) : ?>
+                                <div class="col-md-3 col-xs-3"><h4 class="text-center"><?php echo $this->_("Border"); ?></h4></div>
+                                <?php endif; ?>
+                                <?php if($child->getImageColorVariableName()) : ?>
+                                <div class="col-md-3 col-xs-3"><h4 class="text-center"><?php echo $this->_("Image"); ?></h4></div>
+                                <?php endif; ?>
+                            </div>
+
+
+                            <div id="row_<?php echo $child->getId(); ?>" class="col-md-12 col-xs-12">
+
+                                <?php if($child->getColorVariableName()) : ?>
+                                    <?php $hex = "#".$block_id.$child_id."01"; ?>
+                                <div class="col-md-3 col-xs-3">
+                                    <input type="hidden" name="block_id" value="<?php echo $child->getId(); ?>" />
+                                    <div class="square_color"><button type="button" id="<?php echo $child->getCode(); ?>_text" class="bordered <?php echo $child->getCode(); ?>_text" style="background-color: <?php echo $child->getColor(); ?>"></button></div>
+                                    <input data-index="<?php echo $hex; ?>" data-variable="<?php echo $child->getColorVariableName() ?>" type="hidden" id="<?php echo $child->getCode(); ?>_text_receiver" name="color" value="<?php echo $child->getColor() ?>" />
+                                </div>
+                                <?php endif; ?>
+
+                                <?php if($child->getBackgroundColorVariableName()) : ?>
+                                    <?php $hex = "#".$block_id.$child_id."02"; ?>
+                                <div class="col-md-3 col-xs-3">
+                                    <input type="hidden" name="block_id" value="<?php echo $child->getId(); ?>" />
+                                    <div class="square_color"><button type="button" id="<?php echo $child->getCode(); ?>_bg" class="bordered <?php echo $child->getCode(); ?>_bg" style="background-color: <?php echo $child->getBackgroundColor(); ?>"></button></div>
+                                    <input data-index="<?php echo $hex; ?>" data-variable="<?php echo $child->getBackgroundColorVariableName() ?>" type="hidden" id="<?php echo $child->getCode(); ?>_bg_receiver" name="background_color" value="<?php echo $child->getBackgroundColor() ?>" />
+                                </div>
+                                <?php endif; ?>
+
+                                <?php if($child->getBorderColorVariableName()) : ?>
+                                    <?php $hex = "#".$block_id.$child_id."03"; ?>
+                                <div class="col-md-3 col-xs-3">
+                                    <input type="hidden" name="block_id" value="<?php echo $child->getId(); ?>" />
+                                    <div class="square_color"><button type="button" id="<?php echo $child->getCode(); ?>_border" class="bordered <?php echo $child->getCode(); ?>_border" style="background-color: <?php echo $child->getBorderColor(); ?>"></button></div>
+                                    <input data-index="<?php echo $hex; ?>" data-variable="<?php echo $child->getBorderColorVariableName() ?>" type="hidden" id="<?php echo $child->getCode(); ?>_border_receiver" name="border_color" value="<?php echo $child->getBorderColor() ?>" />
+                                </div>
+                                <?php endif; ?>
+
+                                <?php if($child->getImageColorVariableName()) : ?>
+                                    <?php $hex = "#".$block_id.$child_id."04"; ?>
+                                <div class="col-md-3 col-xs-3">
+                                    <input type="hidden" name="block_id" value="<?php echo $child->getId(); ?>" />
+                                    <div class="square_color"><button type="button" id="<?php echo $child->getCode(); ?>_image" class="bordered <?php echo $child->getCode(); ?>_image" style="background-color: <?php echo $child->getImageColor(); ?>"></button></div>
+                                    <input data-index="<?php echo $hex; ?>" data-variable="<?php echo $child->getImageColorVariableName() ?>" type="hidden" id="<?php echo $child->getCode(); ?>_image_receiver" name="image_color" value="<?php echo $child->getImageColor() ?>" />
+                                </div>
+                                <?php endif; ?>
+
+                            </div>
+
+                            <?php if($child->getData("name") == "Homepage"): ?>
+                                <div class="col-md-12 col-xs-12">
+                                    <label for="<?php echo $child->getCode(); ?>_transparent_background_color_receiver">
+                                        <input data-index="homepage_opacity" type="checkbox" id="<?php echo $child->getCode(); ?>_transparent_background_color_receiver" name="background_color" value="transparent"<?php if($tabbar_block->getBackgroundColor() == "transparent") : ?> checked="checked"<?php endif; ?> />
+                                        <?php echo __("Transparent"); ?>
+                                    </label>
+                                </div>
+
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endforeach; ?>
+
+                    <div class="change-overview-content content-color content">
+                        <h3 class="title-editor border-yellow">
+                            <?php echo __("Advanced Customization CSS / SCSS"); ?>
+                            <div class="css-toggle" id="toggle-scss">
+                                <input class="sb-tgl sb-tgl-flip toggle" id="cb_on_off" type="checkbox" value="0" />
+                                <label class="sb-tgl-btn" for="cb_on_off" data-tg-off="Off" data-tg-on="On!"></label>
+                            </div>
+                        </h3>
+
+                        <?php $custom_scss = $this->getApplication()->getCustomScss(); ?>
+                        <div id="row_scss" class="col-md-12 col-xs-12" style="display: none;">
+                            <div class="form-group">
+                                <h4>
+                                    <?php echo __("Available SCSS Variables corresponding to previously set colors"); ?>
+                                </h4>
+                                <br />
+                                <div>
+                                    <?php $variables = Template_Model_Design::getVariables($this->getApplication()); ?>
+                                    <?php foreach($variables as $name => $value): ?>
+                                        <span class="mini-color col-md-6 col-xs-12">
+                                            <div class="mini-box" id="<?php echo $name ?>" style="background-color: <?php echo $value; ?>"></div><?php echo $name ?>
+                                        </span>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="sb-cb"></div>
+                            </div>
+                            <div class="form-group sb-form-line">
+                                <div class="col-sm-12">
+                                    <label style="margin-top: 24px;"><?php echo __("Input your SCSS here, save to validate & preview") ?></label>
+                                    <textarea name="custom_scss" id="custom_scss" maxlength="16777215" cols="" rows="20" class="input-flat"><?php echo $this->getApplication()->getCustomScss() ?></textarea>
+                                </div>
+                                <div class="sb-cb"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2 col-sm-offset-10">
+                                    <button class="btn color-blue pull-right" id="save_scss"><?php echo __("Save") ?></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    
+
+    <script type="text/javascript">
+
+        /** Var overview */
+        var fake_content = false;
+
+        /** First replace link with scss */
+        var template_css = "<?php echo addslashes(str_replace("\n", "", Template_Model_Design::generateCss($this->getApplication(), true))); ?>";
+        var template = template_css;
+        $("input[data-index]").each(function() {
+            var el = $(this);
+            var index = el.data("index");
+            var value = el.val();
+            template = template.replace(new RegExp(index, "g"), value);
+        });
+
+        $(".change-overview-content").hover(function() {
+            if(fake_content) {
+                var rel = $(this).attr("data-rel");
+                var name = $(this).attr("data-name");
+                iframe.f.displayElement(rel, name);
+
+                $(".change-overview-content").addClass("inactive-section");
+                $(this).removeClass("inactive-section");
+            }
+        });
+        var scroller;
+
+
+        $(document).ready(function() {
+
+            $('#app_colors').hover(function() {
+                $('#mobile_overview').show();
+                $('#homepage_overview').hide();
+                iframe.content = $('#mobile_overview').contents();
+
+            }, function() {return false;});
+
+            /** Switch type  */
+            $(".switch_overview").on("click", function() {
+                document.getElementById("mobile_overview").src = "";
+                setTimeout(function() {
+                    document.getElementById("mobile_overview").src = overview_url;
+                }, 100);
+
+                $(".switch").addClass("button-inactive");
+                $(this).removeClass("button-inactive");
+                $(".change-overview-content").removeClass("inactive-section");
+                fake_content = false;
+            });
+
+            $(".switch_colors").on("click", function() {
+                document.getElementById("mobile_overview").src = "";
+                setTimeout(function() {
+                    document.getElementById("mobile_overview").src = colors_url;
+                }, 100);
+
+                $(".switch").addClass("button-inactive");
+                $(this).removeClass("button-inactive");
+                fake_content = true;
+            });
+
+        });
+
+        <?php foreach(array("text" => "color", "bg" => "background_color", "border" => "border_color", "image" => "image_color") as $type => $property) : ?>
+        <?php foreach($blocks as $block) : ?>
+        <?php $children = $block->getChildren() ? $block->getChildren() : array($block); ?>
+        <?php foreach($children as $child) : ?>
+
+            <?php if(!$child->getData("{$property}_variable_name")) continue; ?>
+
+            <?php $target = $child->getCode()."_".$type; ?>
+            $('#<?php echo $target ?>').ColorPicker({
+                color: '<?php echo $child->getData($property) ?>',
+                onShow: function (colpkr) {
+                    overview_colors.showMask();
+                    $(colpkr).slideDown(500);
+                    return false;
+                },
+                onHide: function (colpkr) {
+                    $(colpkr).slideUp(500);
+                    reload($('#row_<?php echo $child->getId(); ?>'), $('#colorsForm').attr('action'), false, function() {});
+                    $('#<?php echo $target ?>_receiver').trigger("change");
+                    overview_colors.hideMask();
+                    return false;
+                },
+                onSubmit: function(hsb, hex, rgb, el) {
+                    $('.colorpicker').slideUp(500);
+                    return false;
+                },
+                onChange: function (hsb, hex, rgb) {
+                    hex = '#'+hex;
+                    var property = "<?php echo $property ?>";
+                    var to = '<?php echo $child->getData("{$property}_variable_name"); ?>';
+                    $('#<?php echo $target ?>_receiver').val(hex);
+                    $('#<?php echo $target ?>').css("background-color", hex);
+
+                    if(document.getElementById(to)) {
+                        document.getElementById(to).style.backgroundColor = hex;
+                    }
+
+                    if(property == "image_color") {
+                        overview_colors.setImageColor(rgb, "<?php echo $child->getCode(); ?>");
+                    } else {
+                        /** Live colors for css, not image */
+                        $('#<?php echo $target ?>_receiver').trigger("change");
+                        overview_colors.setColor(hex, to, '<?php echo $type ?>', property);
+                    }
+                }
+            });
+
+            <?php if($child->getData("name") == "Homepage" AND $property == "background_color"): ?>
+                $('#<?php echo $child->getCode(); ?>_transparent_background_color_receiver').click(function() {
+                    var color = $(this).is(":checked") ? "transparent" : "#000000";
+                    $('#homepage_bg').ColorPickerSetColor(color);
+                    $('#<?php echo $target ?>_receiver').val(color);
+                    var to = '<?php echo $child->getData("{$property}_variable_name"); ?>';
+                    overview_colors.setColor(color, to, "<?php echo $type ?>", "<?php echo $property ?>");
+                    iframe.f.toggleTabbarIsTransparent($(this).is(":checked"));
+                    $('.<?php echo $child->getCode() ?>_bg').css('background-color', color);
+                    reload($('#row_<?php echo $child->getId(); ?>'), $('#colorsForm').attr('action'), false, function(data) {});
+                });
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
+
+        var overview_colors = {
+            homepage_images: null,
+            element: $('#overview'),
+            setColor: function(color, to, type, property) {
+
+                var element = iframe.content.find('[data-'+type+'="'+to+'"]');
+                var translucent_color = null;
+                if(element.hasClass("translucent")) {
+                    if(color != "transparent") {
+                        translucent_color = hexToRgba(color, .8);
+                    } else {
+                        translucent_color = "transparent";
+                    }
+                }
+                
+                if(element.attr("type") == "style/template") {
+
+                    var css = iframe.content.find('[data-' + type + '="' + to + '"]').html();
+                    if(translucent_color) {
+                        css = css.split(to+"-translucent").join(translucent_color);
+                    }
+                    css = css.split(to).join(color);
+
+                    if(iframe.f.document.getElementById(to)) {
+                        iframe.f.document.getElementById(to).innerHTML = css;
+                    } else {
+                        var style = $('<style></style>')
+                            .attr("id", to)
+                            .html(css)
+                        ;
+                        iframe.content.find("head").append(style);
+                    }
+
+                } else {
+                    iframe.content.find('[data-' + type + '="' + to + '"]').css(property.replace("_", "-"), color);
+                }
+
+            },
+            setImageColor: function(color, to) {
+
+                if(!this.homepage_images) {
+                    this.homepage_images = iframe.content.find("#"+to).find("img");
+                    this.homepage_images.each(function(idx, image) {
+                        var new_image = $(image).clone();
+                        new_image.hide()
+                            .insertAfter(image)
+                        ;
+                    });
+                }
+
+                var images = iframe.content.find("#"+to).find("img").not(":visible");
+
+                images.each(function(idx, image) {
+
+                    image = $(image);
+                    var canvas = image.colorize(color, true);
+                    if(canvas) {
+                        image.prev("img").attr("src", canvas.toDataURL());
+                    }
+
+                });
+
+            },
+            pulsate: function(code) {
+                iframe.content.find('.'+code).effect('pulsate', {times: 2});
+            },
+            showMask: function() {
+                $("#mask_colors").show();
+            },
+            hideMask: function() {
+                $("#mask_colors").hide();
+            }
+        };
+
+        function hexToRgba(hex, opacity, colorize) {
+
+            var result = hex;
+            if(!isNaN(opacity) && opacity < 1) {
+
+                hex = hex.replace('#','');
+                r = parseInt(hex.substring(0,2), 16);
+                g = parseInt(hex.substring(2,4), 16);
+                b = parseInt(hex.substring(4,6), 16);
+
+                result = 'rgba('+r+','+g+','+b+','+opacity+')';
+
+                if(typeof colorize != "undefined") {
+                    var rgb = {'r': r, 'g': g, 'b': b};
+                    return rgb;
+                }
+
+            }
+
+            return result;
+        }
+
+        function processImages() {
+            if(!fake_content) {
+                $("#mobile_overview").contents().find("[option] img:visible").each(function (index, image) {
+                    var el = $(image);
+                    console.log(el.next("img").length);
+                    if (!el.next("img").length) {
+                        var new_image = el.clone();
+                        new_image.hide().insertAfter(image);
+                    }
+
+                });
+
+                $("#mobile_overview").contents().find("[option] img").not(":visible").each(function (index, image) {
+                    var image = $(image);
+                    var color = $("#homepage_image_receiver").val();
+                    color = hexToRgba(color, 0.99, true);
+                    var canvas = image.colorize(color, true);
+                    if (canvas) {
+                        image.prev("img").attr("src", canvas.toDataURL());
+                    }
+                });
+            }
+        };
+
+        /** Event to catch page change in iframe overview */
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        // Listen to message from child window
+        eventer(messageEvent, function(e) {
+            switch(e.data) {
+                case "state.go":
+                        setTimeout(function() {processImages();}, 100);
+                        setTimeout(function() {processImages();}, 500);
+                        setTimeout(function() {processImages();}, 2000);
+                    break;
+            }
+        },false);
+
+        /** Then bind for onChange */
+        var processed = false;
+        $("#colorsForm input").change(function() {
+            if(!fake_content) {
+                var el = $(this);
+                var template = template_css;
+                $("input[data-index]").each(function () {
+                    var el = $(this);
+                    var index = el.data("index");
+                    var value = el.val();
+
+                    template = template.replace(new RegExp(index, "g"), value);
+                });
+
+                /** Transparent color */
+                var rgba_to_replace = /rgba\(12, 0, 2, 0\.2\)/gmi
+                if ($("#homepage_transparent_background_color_receiver").is(":checked") !== false) {
+                    template = template.replace(rgba_to_replace, "transparent");
+                } else {
+                    var color = $("#homepage_bg_receiver").val();
+                    color = hexToRgba(color, 0.2);
+                    template = template.replace(rgba_to_replace, color);
+                }
+
+                /** First processing image */
+                if (!processed) {
+                    /** Replace X */
+                    var link = $("#mobile_overview").contents().find("head link[href*='var/cache']");
+                    link.after("<style id=\"scss_live\" type=\"text/css\">" + template + "</style>");
+
+                    if($("#mobile_overview").contents().find("#scss_live").length > 0) {
+                        processed = true;
+                    }
+                }
+
+                $("#mobile_overview").contents().find("#scss_live").text(template);
+
+                if (el.attr("id") == "homepage_image_receiver") {
+                    processImages();
+                }
+            }
+        });
+
+        function refreshCss() {
+            setTimeout(function() {
+                var link = $("#mobile_overview").contents().find("head link[href*='var/cache']");
+                link.attr("href", link.attr("href")+"09");
+            }, 500);
+        }
+
+        $("#save_scss").on("click", function(e) {
+            e.preventDefault();
+            reload($('#row_scss'), $('#colorsForm').attr('action'), true, function() { refreshCss(); setTimeout(function() { message.hide(); }, 2000); }, function() { refreshCss(); });
+            return false;
+        });
+
+        /** Defaults to zero if no localStorage */
+        var toggle = 0;
+        if(typeof localStorage!="undefined") {
+            toggle = localStorage.getItem("show-scss");
+            if(toggle == null) {
+                toggle = 0;
+            }
+        } else if(typeof sessionStorage!="undefined") {
+            toggle = sessionStorage.getItem("show-scss");
+            if(toggle == null) {
+                toggle = 0;
+            }
+        }
+
+        $("#cb_on_off").on("click", function() {
+            var el = $("#cb_on_off");
+            var new_val = el.is(":checked") ? 1 : 0;
+            if(typeof localStorage!="undefined") {
+                toggle = localStorage.setItem("show-scss", new_val);
+            } else if(typeof sessionStorage!="undefined") {
+                toggle = sessionStorage.setItem("show-scss", new_val);
+            } else {
+                toggle = new_val;
+            }
+            if(new_val == 1) {
+                $("#row_scss").show();
+            } else {
+                $("#row_scss").hide();
+            }
+        });
+
+        if(toggle == 1) {
+            $("#cb_on_off").click();
+        }
+
+
+    </script>
+    <style>
+        #mask_colors {background-color: transparent;z-index:999; display: none; }
+        #colorsForm h5.capitalize{padding-left:25px;font-width:bold;}
+        #colorsForm h5{font-size:16px}
+        /*#overview #iphone {background:none}*/
+        .inactive-section { opacity: 0.35; }
+        .inactive-section,
+        .inactive-section h3 { background-color: lightgrey !important; border-color: grey !important; }
+        .inactive-section .square_color button { background-color: grey !important; }
+        .change-overview-content.content-color.content { padding-bottom: 16px; }
+        .button-inactive { opacity: 0.6; }
+        @media (max-width: 1440px) and (min-width: 768px) {  button.mobile-advice:nth-child(2) {  display: block;  }  }
+        .mini-color { margin-bottom: 6px;}
+        div.mini-box { width: 22px; height: 22px; border: 1px solid #ffffff; float: left; margin-right: 10px;}
+        .css-toggle {  margin-top: 0px;  float: right;  margin-right: 10px;  font-size: 14px;  }
+
+    </style>
+
+    <div id="mask_colors" class="mask"></div>
+
+</div>

@@ -1,0 +1,12 @@
+{
+  "name": "Feedback",
+  "description": "This will be called feedback where once users logged in they can write a feedback",
+  "type": "module",
+  "version": "1.0.7",
+  "dependencies": {
+    "system": {
+      "type": "SAE",
+      "version": "4.4.2"
+    }
+  }
+}
