@@ -13601,7 +13601,11 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 			$scope.customer_id = '';
 			$scope.value_id = Feedback.value_id = $stateParams.value_id;
 			Feedback.findAll().success(function (data) {
-				$scope.page_title = data.page_title;
+				if (data.page_title !== '') {
+					$scope.page_title = data.page_title.toUpperCase();
+				} else {
+					$scope.page_title = data.page_title;
+				}
 				$scope.customer_id = data.customer_id;
 				$scope.feedbackData.feedback_content = data.feedback_content;
 			}).error(function () {
