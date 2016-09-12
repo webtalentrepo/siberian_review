@@ -49,7 +49,7 @@
     },
     {
         "file": "index-prod.html",
-        "hash": "069789ef5efc1bddbb4475fe88683d91"
+        "hash": "4d5256c285451d12e8ecdcd36343619f"
     },
     {
         "file": "lib/ngCordova/dist/ng-cordova.min.js",
@@ -548,6 +548,10 @@
         "hash": "5845d81a3c3bdaa684b5b4817453ccc2"
     },
     {
+        "file": "js/controllers/feedback.js",
+        "hash": "d15c925e3e11f1e1a1e07d04e4d9a53d"
+    },
+    {
         "file": "js/controllers/folder.js",
         "hash": "10a18a7738485affa338edabff15690f"
     },
@@ -710,6 +714,10 @@
     {
         "file": "js/factory/newswall.js",
         "hash": "dcc6f72dd72a951122b285aeb04ed8f1"
+    },
+    {
+        "file": "js/factory/feedback.js",
+        "hash": "ae17be9390ff4e1e5312efab72b9ae7f"
     },
     {
         "file": "js/factory/folder.js",
@@ -910,6 +918,10 @@
     {
         "file": "templates/maps/l1/view.html",
         "hash": "b1800778361ea3d5788f1b2b083e6de9"
+    },
+    {
+        "file": "templates/feedback/l1/view.html",
+        "hash": "e8ad9989d0c3956817e110c2ffaafbe4"
     },
     {
         "file": "templates/weather/l1/view.html",
@@ -1277,7 +1289,7 @@
     },
     {
         "file": "index.html",
-        "hash": "4867e203f4257c4703fe32d3579ac736"
+        "hash": "49dba792f8ca29ab84306ae8519fd60f"
     },
     {
         "file": "cordova.js",
