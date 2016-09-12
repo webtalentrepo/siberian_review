@@ -396,3 +396,7 @@
 [CRON: 2016-09-12 19:58:01]: Execution time 0.008465051651001
 [CRON: 2016-09-12 19:59:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
 [CRON: 2016-09-12 19:59:01]: Execution time 0.0041007995605469
+[CRON: 2016-09-12 20:00:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 20:00:01]: Execution time 0.0040731430053711
+[CRON: 2016-09-12 20:01:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 20:01:01]: Execution time 0.0042510032653809
