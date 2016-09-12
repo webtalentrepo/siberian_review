@@ -10,6 +10,7 @@ App.config(function ($stateProvider) {
 	function ($rootScope, $ionicModal, $window, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
 		$scope.$on("connectionStateChange", function (event, args) {
 			if (args.isOnline == true && $scope.is_logged_in) {
+				$scope.init();
 				$scope.loadContent();
 			}
 		});
@@ -48,10 +49,6 @@ App.config(function ($stateProvider) {
 		};
 		$scope.loadContent = function () {
 			$scope.is_loading = true;
-			$scope.page_title = '';
-			$scope.customer_id = '';
-			$scope.feedbackData = {};
-			$scope.feedbackData.feedback_content = '';
 			$scope.value_id = Feedback.value_id = $stateParams.value_id;
 			Feedback.findAll().success(function (data) {
 				if (data.page_title !== '') {
@@ -75,11 +72,8 @@ App.config(function ($stateProvider) {
 			};
 			$scope.is_loading = true;
 			Feedback.post($scope.feedbackData).success(function (data) {
-				$scope.feedbackData = {};
 				if (data.success) {
 					Dialog.alert('', data.message, $translate.instant('OK'));
-					$scope.loadContent();
-					// $scope.closeFeedbackModal();
 				}
 			}).error(function (data) {
 				if (data && angular.isDefined(data.message)) {

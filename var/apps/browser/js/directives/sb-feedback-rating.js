@@ -1,7 +1,7 @@
 App.directive('sbFeedbackRating', ['$timeout', function ($timeout) {
 	return {
 		restrict: 'EA',
-		require: ['rating', 'ngModel'],
+		require: ['sbFeedbackRating', 'ngModel'],
 		scope: {
 			readonly: '=?'
 		},
