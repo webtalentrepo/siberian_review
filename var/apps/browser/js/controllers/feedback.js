@@ -4,7 +4,7 @@ App.config(function ($stateProvider) {
 		cache: false,
 		url: BASE_PATH + '/feedback/mobile_view/index/value_id/:value_id',
 		controller: 'FeedbackWriteController',
-		templateUrl: 'templates/feedback/l1/view.html'
+		// templateUrl: 'templates/feedback/l1/view.html'
 	});
 	
 }).controller('FeedbackWriteController', function ($rootScope, $ionicModal, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
