@@ -43,9 +43,9 @@ App.config(function ($stateProvider) {
 			$scope.customer_id = '';
 			$scope.feedbackData = {};
 			$scope.feedbackData.feedback_content = '';
-			$scope.rating = {};
-			$scope.rating.rate = 2.3;
-			$scope.rating.max = 5;
+			$scope.feedbackData.feedback_score = {};
+			$scope.feedbackData.feedback_score.rate = 0;
+			$scope.feedbackData.feedback_score.max = 5;
 		};
 		$scope.loadContent = function () {
 			$scope.is_loading = true;
