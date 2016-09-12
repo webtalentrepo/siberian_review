@@ -13,9 +13,10 @@
 					</div>
 				</div>
 				<div class="list">
-					<label class="item item-avatar-right">
-						Rate <sb-feedback-rating ng-model="rating.rate" max="rating.max"></sb-feedback-rating>
-					</label>
+					<div>
+						Rate
+						<sb-feedback-rating ng-model="rating.rate" max="rating.max"></sb-feedback-rating>
+					</div>
 				</div>
 				<div class="list">
 					<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
