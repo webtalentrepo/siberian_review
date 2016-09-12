@@ -4,33 +4,24 @@
 		<div class="container-fluid"><br/></div>
 		<div class="container-fluid" ng-if="is_logged_in">
 			<form name="form" ng-submit="post()">
-				<ion-row>
-					<ion-col>
+				<div class="list">
+					<div>
 						<label class="item item-input item-custom">
 							<textarea rows="5" class="form-control" placeholder="Enter Your Review"
 							          ng-model="feedbackData.feedback_content"></textarea>
 						</label>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<div item-right>
-							Rate
-						</div>
-					</ion-col>
-					<ion-col>
-						<div item-right>
-							<sb-feedback-rating ng-model="rating.rate" max="rating.max"></sb-feedback-rating>
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
-							{{ 'SUBMIT' | translate }}
-						</button>
-					</ion-col>
-				</ion-row>
+					</div>
+				</div>
+				<div class="list">
+					<label class="item item-avatar-right">
+						Rate <sb-feedback-rating ng-model="rating.rate" max="rating.max"></sb-feedback-rating>
+					</label>
+				</div>
+				<div class="list">
+					<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
+						{{ 'SUBMIT' | translate }}
+					</button>
+				</div>
 			</form>
 			<div class="loader" ng-show="is_loading">
 				<ion-spinner class="spinner-custom"></ion-spinner>
