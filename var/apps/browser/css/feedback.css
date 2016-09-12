@@ -1,12 +1,32 @@
 ul.rating li {
-  display: inline;
-  border: 0;
-  background: none;
-  padding: 1px;
+	display: inline;
+	border: 0;
+	background: none;
+	padding: 1px;
 }
+
 ul.rating li i {
-  font-size: 24px;
+	font-size: 24px;
 }
+
 ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 	color: #e8d834;
+}
+
+.rate-label {
+	font-size: 20px;
+	float: left;
+	margin: 4px 0 0 40%;
+}
+
+.rate-score {
+	float: right;
+}
+
+.rate-list-1 {
+	margin: 1em 0.5em;
+}
+
+.rate-list-0 {
+	margin: 0.5em 0.5em;
 }
