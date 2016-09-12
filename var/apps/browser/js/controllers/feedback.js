@@ -35,9 +35,9 @@ App.config(function ($stateProvider) {
 		}).then(function (modal) {
 			Customer.modal = modal;
 			Customer.modal.show();
-			Customer.modal.closeModal = function (result) {
-				Customer.modal.hide();
-				$window.history.back();
+			$scope.modal.closeModal = function (result) {
+				console.log(result);
+				$scope.modal.hide();
 			}
 		});
 	};
