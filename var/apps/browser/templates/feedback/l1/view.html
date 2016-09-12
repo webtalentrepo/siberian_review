@@ -1,18 +1,22 @@
 <ion-view>
-	<ion-nav-title ng-if="is_logged_in">{{ page_title }}</ion-nav-title>
-	<ion-content ng-if="is_logged_in" sb-background-image>
-		<form name="form" ng-submit="post()">
-			<div class="list">
-				<div>
-					<label class="item item-input item-custom">
-						<textarea rows="3" class="form-control" placeholder="Feedback Content" ng-model="feedbackData.feedback_content"></textarea>
-					</label>
+	<ion-nav-title>{{ page_title }}</ion-nav-title>
+	<ion-content sb-background-image>
+		<div class="container-fluid" ng-if="is_logged_in">
+			<form name="form" ng-submit="post()">
+				<div class="list">
+					<div>
+						<label class="item item-input item-custom">
+							<textarea rows="3" class="form-control" placeholder="Feedback Content"
+							          ng-model="feedbackData.feedback_content"></textarea>
+						</label>
+					</div>
 				</div>
+			</form>
+			<button type="submit" class="button button-block button-custom" ng-click="post()" ng-show="!is_loading">{{ "Submit" | translate }}
+			</button>
+			<div class="loader" ng-show="is_loading">
+				<ion-spinner class="spinner-custom"></ion-spinner>
 			</div>
-		</form>
-		<button type="submit" class="button button-block button-custom" ng-click="post()" ng-show="!is_loading">{{ "Submit" | translate }}</button>
-		<div class="loader" ng-show="is_loading">
-			<ion-spinner class="spinner-custom"></ion-spinner>
 		</div>
 	</ion-content>
 </ion-view>
