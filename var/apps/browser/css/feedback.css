@@ -30,3 +30,19 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 .rate-list-0 {
 	margin: 0.5em 0.5em;
 }
+
+.overall-score {
+	float: right;
+}
+
+.overall-score ul.rating li i {
+	font-size: 20px;
+}
+
+.overall-score-list {
+	margin: 0.1em 0.5em;
+}
+
+.overall-score-list span {
+	font-size: 16px;
+}

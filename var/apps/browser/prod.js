@@ -13597,6 +13597,10 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 			$scope.feedbackData.feedback_score = {};
 			$scope.feedbackData.feedback_score.rate = 0;
 			$scope.feedbackData.feedback_score.max = 5;
+			$scope.scoreData = {};
+			$scope.scoreData.overall = 0;
+			$scope.scoreData.readOnly = true;
+			$scope.scoreData.rateList = [];
 		};
 		$scope.loadContent = function () {
 			$scope.is_loading = true;
@@ -13643,6 +13647,7 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		}
 	}
 ]);
+
 ;App.config(function($stateProvider) {
 
     $stateProvider.state('video-list', {
