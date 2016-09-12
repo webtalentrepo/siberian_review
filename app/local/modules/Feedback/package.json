@@ -2,7 +2,7 @@
   "name": "Feedback",
   "description": "This will be called feedback where once users logged in they can write a feedback",
   "type": "module",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "dependencies": {
     "system": {
       "type": "SAE",

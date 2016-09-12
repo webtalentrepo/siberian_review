@@ -40,6 +40,10 @@
         "hash": "0e8ce63dd067b26fcb5a9ae1ff2d4fb1"
     },
     {
+        "file": "css/feedback.css",
+        "hash": "7371b63d2839767c37a5fd3162950ae7"
+    },
+    {
         "file": "css/ionic.app.min.css",
         "hash": "160fa99a963cfd3b5749e790289a6983"
     },
@@ -49,7 +53,7 @@
     },
     {
         "file": "index-prod.html",
-        "hash": "4d5256c285451d12e8ecdcd36343619f"
+        "hash": "7520ffe430d6769b0f6d97f46446d490"
     },
     {
         "file": "lib/ngCordova/dist/ng-cordova.min.js",
@@ -416,6 +420,10 @@
         "hash": "5f5eef643e7303509797df2d5363b931"
     },
     {
+        "file": "js/directives/sb-feedback-rating.js",
+        "hash": "64f00ea3772f3b7bb54e978f160bff5a"
+    },
+    {
         "file": "js/directives/sb-tooltip.js",
         "hash": "5f0e3f8a59d067c9625f1beb05cae5ea"
     },
@@ -450,6 +458,10 @@
     {
         "file": "js/constants/auth-events.js",
         "hash": "ff6a87e41d84c57cc92b6be92d3f7e72"
+    },
+    {
+        "file": "js/constants/feedback-config.js",
+        "hash": "b77cd7b917486db02eb098127b28694c"
     },
     {
         "file": "js/controllers/padlock.js",
@@ -549,7 +561,7 @@
     },
     {
         "file": "js/controllers/feedback.js",
-        "hash": "d15c925e3e11f1e1a1e07d04e4d9a53d"
+        "hash": "99c021873ac887ec65aad9145fa576b8"
     },
     {
         "file": "js/controllers/folder.js",
@@ -717,7 +729,7 @@
     },
     {
         "file": "js/factory/feedback.js",
-        "hash": "ae17be9390ff4e1e5312efab72b9ae7f"
+        "hash": "f3b83c580e971d98ed12a0b1733aecc0"
     },
     {
         "file": "js/factory/folder.js",
@@ -921,7 +933,7 @@
     },
     {
         "file": "templates/feedback/l1/view.html",
-        "hash": "e8ad9989d0c3956817e110c2ffaafbe4"
+        "hash": "246e7baf607dac0b5de9414bd9759e02"
     },
     {
         "file": "templates/weather/l1/view.html",
@@ -1289,7 +1301,7 @@
     },
     {
         "file": "index.html",
-        "hash": "49dba792f8ca29ab84306ae8519fd60f"
+        "hash": "d2e0ad0d0f53e5f80a38e26f9d049bef"
     },
     {
         "file": "cordova.js",
