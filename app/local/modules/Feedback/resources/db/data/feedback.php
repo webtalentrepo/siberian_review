@@ -54,44 +54,56 @@ $acl_resource
 	->insertOnce(array("code"));
 
 # Copy assets
-$previewer_varpath = Core_Model_Directory::getBasePathTo("/app/local/modules/Feedback/resources/var/apps");
-$varpath = Core_Model_Directory::getBasePathTo("/var/apps/browser");
+$feedback_var_path = Core_Model_Directory::getBasePathTo("/app/local/modules/Feedback/resources/var/apps");
+$var_path = Core_Model_Directory::getBasePathTo("/var/apps/browser");
 
-if (file_exists($previewer_varpath) && file_exists($varpath)) {
-	exec("cp -R {$previewer_varpath}/* {$varpath}/");
-	exec("chmod -R 777 {$varpath}/");
+if (file_exists($feedback_var_path) && file_exists($var_path)) {
+	exec("cp -R {$feedback_var_path}/* {$var_path}/");
+	exec("chmod -R 777 {$var_path}/");
 }
 
-$varpath1 = Core_Model_Directory::getBasePathTo("/var/apps/ionic/ios/www");
-if (file_exists($previewer_varpath) && file_exists($varpath1)) {
-	exec("cp -R {$previewer_varpath}/* {$varpath1}/");
-	exec("chmod -R 777 {$varpath1}/");
+$var_path1 = Core_Model_Directory::getBasePathTo("/var/apps/ionic/ios/www");
+if (file_exists($feedback_var_path) && file_exists($var_path1)) {
+	exec("cp -R {$feedback_var_path}/* {$var_path1}/");
+	exec("chmod -R 777 {$var_path1}/");
 }
 
-$varpath2 = Core_Model_Directory::getBasePathTo("/var/apps/ionic/android/assets/www");
-if (file_exists($previewer_varpath) && file_exists($varpath2)) {
-	exec("cp -R {$previewer_varpath}/* {$varpath2}/");
-	exec("chmod -R 777 {$varpath2}/");
+$var_path2 = Core_Model_Directory::getBasePathTo("/var/apps/ionic/android/assets/www");
+if (file_exists($feedback_var_path) && file_exists($var_path2)) {
+	exec("cp -R {$feedback_var_path}/* {$var_path2}/");
+	exec("chmod -R 777 {$var_path2}/");
 }
 
-$varpath3 = Core_Model_Directory::getBasePathTo("/var/apps/ionic/ios-noads/www");
-if (file_exists($previewer_varpath) && file_exists($varpath3)) {
-	exec("cp -R {$previewer_varpath}/* {$varpath3}/");
-	exec("chmod -R 777 {$varpath3}/");
+$var_path3 = Core_Model_Directory::getBasePathTo("/var/apps/ionic/ios-noads/www");
+if (file_exists($feedback_var_path) && file_exists($var_path3)) {
+	exec("cp -R {$feedback_var_path}/* {$var_path3}/");
+	exec("chmod -R 777 {$var_path3}/");
 }
 
 $indexHtml = Core_Model_Directory::getBasePathTo("/var/apps/browser/index.html");
 $str = file_get_contents($indexHtml);
 $oldStr = '<script src="js/controllers/radio.js"></script>';
 $oldStr1 = '<script src="js/factory/radio.js"></script>';
+$oldStr2 = '<link href="css/ionic.app.min.css" rel="stylesheet">';
+$oldStr3 = '<script src="js/constants/cache-events.js"></script>';
+$oldStr4 = '<script src="js/directives/sb-a-click.js"></script>';
 $replaceStr = '<script src="js/controllers/radio.js"></script>
-<script src="js/controllers/feedback.js"></script>';
+		<script src="js/controllers/feedback.js"></script>';
 $replaceStr1 = '<script src="js/factory/radio.js"></script>
-<script src="js/factory/feedback.js"></script>';
+		<script src="js/factory/feedback.js"></script>';
+$replaceStr2 = '<link href="css/ionic.app.min.css" rel="stylesheet">
+		<link href="css/feedback.css" rel="stylesheet">';
+$replaceStr3 = '<script src="js/constants/cache-events.js"></script>
+		<script src="js/constants/feedback-config.js"></script>';
+$replaceStr4 = '<script src="js/directives/sb-a-click.js"></script>
+		<script src="js/directives/sb-feedback-rating.js"></script>';
 if (strpos($str, "feedback") !== false) {
 } else {
 	$str = str_replace($oldStr, $replaceStr, $str);
 	$str = str_replace($oldStr1, $replaceStr1, $str);
+	$str = str_replace($oldStr2, $replaceStr2, $str);
+	$str = str_replace($oldStr3, $replaceStr3, $str);
+	$str = str_replace($oldStr4, $replaceStr4, $str);
 	file_put_contents($indexHtml, $str);
 }
 
@@ -101,6 +113,9 @@ if (strpos($str1, "feedback") !== false) {
 } else {
 	$str1 = str_replace($oldStr, $replaceStr, $str1);
 	$str1 = str_replace($oldStr1, $replaceStr1, $str1);
+	$str1 = str_replace($oldStr2, $replaceStr2, $str1);
+	$str1 = str_replace($oldStr3, $replaceStr3, $str1);
+	$str1 = str_replace($oldStr4, $replaceStr4, $str1);
 	file_put_contents($indexHtml1, $str1);
 }
 
@@ -110,6 +125,9 @@ if (strpos($str2, "feedback") !== false) {
 } else {
 	$str2 = str_replace($oldStr, $replaceStr, $str2);
 	$str2 = str_replace($oldStr1, $replaceStr1, $str2);
+	$str2 = str_replace($oldStr2, $replaceStr2, $str2);
+	$str2 = str_replace($oldStr3, $replaceStr3, $str2);
+	$str2 = str_replace($oldStr4, $replaceStr4, $str2);
 	file_put_contents($indexHtml2, $str2);
 }
 
@@ -119,5 +137,8 @@ if (strpos($str3, "feedback") !== false) {
 } else {
 	$str3 = str_replace($oldStr, $replaceStr, $str3);
 	$str3 = str_replace($oldStr1, $replaceStr1, $str3);
+	$str3 = str_replace($oldStr2, $replaceStr2, $str3);
+	$str3 = str_replace($oldStr3, $replaceStr3, $str3);
+	$str3 = str_replace($oldStr4, $replaceStr4, $str3);
 	file_put_contents($indexHtml3, $str3);
 }
