@@ -7,15 +7,37 @@ App.config(function ($stateProvider) {
 		templateUrl: 'templates/feedback/l1/view.html'
 	});
 	
-}).controller('FeedbackWriteController', function ($rootScope, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
+}).controller('FeedbackWriteController', function ($rootScope, $ionicModal, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
 	
-	$scope.$on('connectionStateChange', function (event, args) {
+	$scope.$on("connectionStateChange", function (event, args) {
 		if (args.isOnline == true) {
 			$scope.loadContent();
 		}
 	});
 	
+	$scope.$on(AUTH_EVENTS.loginSuccess, function () {
+		$scope.is_logged_in = true;
+		$scope.init();
+		$scope.loadContent();
+	});
+	$scope.$on(AUTH_EVENTS.logoutSuccess, function () {
+		$scope.is_logged_in = false;
+		$scope.init();
+		$scope.loadContent();
+	});
+	
 	$scope.is_logged_in = Customer.isLoggedIn();
+	
+	$scope.login = function() {
+		$ionicModal.fromTemplateUrl('templates/customer/account/l1/login.html', {
+			scope: $scope,
+			animation: 'slide-in-up'
+		}).then(function(modal) {
+			Customer.modal = modal;
+			Customer.modal.show();
+		});
+	};
+	
 	$scope.init = function () {
 		$scope.is_loading = false;
 		$scope.value_id = Feedback.value_id = $stateParams.value_id;
@@ -40,13 +62,8 @@ App.config(function ($stateProvider) {
 			
 		}).finally(function () {
 			$scope.is_loading = false;
-			$scope.closeFeedbackModal();
 		});
 		
-	};
-	
-	$scope.closeFeedbackModal = function () {
-		// Feedback.modal.hide();
 	};
 	
 	$scope.post = function () {
@@ -73,14 +90,4 @@ App.config(function ($stateProvider) {
 		});
 	};
 	
-	if ($scope.is_logged_in) {
-		$scope.init();
-		$scope.loadContent();
-	} else {
-		$scope.$on(AUTH_EVENTS.loginSuccess, function() {
-			$scope.is_logged_in = true;
-			$scope.init();
-			$scope.loadContent();
-		});
-	}
 });
