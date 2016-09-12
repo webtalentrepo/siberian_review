@@ -1605,3 +1605,31 @@ PHP Fatal error:  Uncaught exception 'PD[CRON: 2016-09-12 11:52:24]: Cron is dis
 [CRON: 2016-09-12 11:59:01]: Execution time 0.004241943359375
 [CRON: 2016-09-12 12:00:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
 [CRON: 2016-09-12 12:00:01]: Execution time 0.0045318603515625
+[CRON: 2016-09-12 12:01:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:01:01]: Execution time 0.0041389465332031
+[CRON: 2016-09-12 12:02:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:02:01]: Execution time 0.0042850971221924
+[CRON: 2016-09-12 12:03:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:03:01]: Execution time 0.0096220970153809
+[CRON: 2016-09-12 12:04:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:04:01]: Execution time 0.0043489933013916
+[CRON: 2016-09-12 12:05:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:05:01]: Execution time 0.0040369033813477
+[CRON: 2016-09-12 12:06:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:06:01]: Execution time 0.0044441223144531
+[CRON: 2016-09-12 12:07:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:07:01]: Execution time 0.0041301250457764
+[CRON: 2016-09-12 12:08:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:08:01]: Execution time 0.0044679641723633
+[CRON: 2016-09-12 12:09:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:09:01]: Execution time 0.01250696182251
+[CRON: 2016-09-12 12:10:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:10:01]: Execution time 0.004382848739624
+[CRON: 2016-09-12 12:11:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:11:01]: Execution time 0.0043621063232422
+[CRON: 2016-09-12 12:12:02]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:12:02]: Execution time 0.005681037902832
+[CRON: 2016-09-12 12:13:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:13:01]: Execution time 0.0043849945068359
+[CRON: 2016-09-12 12:14:01]: Cron is disabled in your system, see: Backoffice > Settings > Advanced > Configuration > Cron
+[CRON: 2016-09-12 12:14:01]: Execution time 0.0043768882751465
