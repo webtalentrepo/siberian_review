@@ -13595,7 +13595,7 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 			$scope.feedbackData = {};
 			$scope.feedbackData.feedback_content = '';
 			$scope.rating = {};
-			$scope.rating.rate = 0;
+			$scope.rating.rate = 2.3;
 			$scope.rating.max = 5;
 		};
 		$scope.loadContent = function () {
