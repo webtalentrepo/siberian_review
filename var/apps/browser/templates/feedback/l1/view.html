@@ -1,10 +1,9 @@
 <ion-view>
 	<ion-nav-title>{{ page_title }}</ion-nav-title>
 	<ion-content sb-background-image>
-		<div class="row-stretch"><br/></div>
 		<div class="input-container" ng-if="is_logged_in">
 			<form name="form" ng-submit="post()">
-				<div class="list" style="margin: 0 0.5em;">
+				<div class="list" style="margin: 1em 0.5em;">
 					<div>
 						<label class="item item-input item-custom">
 							<textarea rows="5" class="form-control" placeholder="Enter your review"
@@ -14,13 +13,14 @@
 				</div>
 				<div class="list" style="margin: 1em 0.5em;">
 					<div>
-						<div style="font-size: 20px;float: left;margin: 4px 30px 0 33%;">Rate</div>
-						<div>
+						<div style="font-size: 20px;float: left;margin: 4px 0 0 40%;">Rate</div>
+						<div style="float: right;">
 							<sb-feedback-rating ng-model="rating.rate" max="rating.max"></sb-feedback-rating>
 						</div>
 					</div>
 				</div>
-				<div class="list" style="margin: 0 0.5em;">
+				<br/>
+				<div class="list" style="margin: 0.5em 0.5em;">
 					<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
 						{{ 'SUBMIT' | translate }}
 					</button>
