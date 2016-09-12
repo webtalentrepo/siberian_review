@@ -13493,7 +13493,7 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		templateUrl: 'templates/feedback/l1/view.html'
 	});
 	
-}).controller('FeedbackWriteController', function ($rootScope, $scope, $stateParams, $translate, Customer, Dialog, Feedback) {
+}).controller('FeedbackWriteController', function ($rootScope, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
 	
 	$scope.$on('connectionStateChange', function (event, args) {
 		if (args.isOnline == true) {
@@ -13502,14 +13502,15 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 	});
 	
 	$scope.is_logged_in = Customer.isLoggedIn();
-	console.log($scope.is_logged_in);
-	$scope.is_loading = true;
-	$scope.value_id = Feedback.value_id = $stateParams.value_id;
-	$scope.feedbackData = {};
-	$scope.feedbackData.feedback_content = '';
+	$scope.init = function () {
+		$scope.is_loading = false;
+		$scope.value_id = Feedback.value_id = $stateParams.value_id;
+		$scope.feedbackData = {};
+		$scope.feedbackData.feedback_content = '';
+		$scope.page_title = '';
+		$scope.customer_id = '';
+	};
 	
-	$scope.page_title = '';
-	$scope.customer_id = '';
 	$scope.loadContent = function () {
 		$scope.is_loading = true;
 		$scope.feedbackData = {};
@@ -13530,7 +13531,7 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		
 	};
 	
-	$scope.closeFeedbackModal = function() {
+	$scope.closeFeedbackModal = function () {
 		// Feedback.modal.hide();
 	};
 	
@@ -13558,8 +13559,16 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		});
 	};
 	
-	$scope.loadContent();
-	
+	if ($scope.is_logged_in) {
+		$scope.init();
+		$scope.loadContent();
+	} else {
+		$scope.$on(AUTH_EVENTS.loginSuccess, function() {
+			$scope.is_logged_in = true;
+			$scope.init();
+			$scope.loadContent();
+		});
+	}
 });
 ;App.config(function($stateProvider) {
 
