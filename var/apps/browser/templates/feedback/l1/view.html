@@ -1,18 +1,19 @@
 <ion-view>
 	<ion-nav-title>{{ page_title }}</ion-nav-title>
 	<ion-content sb-background-image>
-		<div class="container-fluid" ng-if="is_logged_in">
+		<div class="container-fluid margin-top-15 padding-top-5" ng-if="is_logged_in">
 			<form name="form" ng-submit="post()">
 				<div class="list">
 					<div>
 						<label class="item item-input item-custom">
-							<textarea rows="3" class="form-control" placeholder="Feedback Content"
+							<textarea rows="3" class="form-control" placeholder="Enter Your Review"
 							          ng-model="feedbackData.feedback_content"></textarea>
 						</label>
 					</div>
 				</div>
 			</form>
-			<button type="submit" class="button button-block button-custom" ng-click="post()" ng-show="!is_loading">{{ 'SUBMIT' | translate }}
+			<button type="submit" class="button button-block button-custom button-positive" ng-click="post()" ng-show="!is_loading">
+				{{ 'SUBMIT' | translate }}
 			</button>
 			<div class="loader" ng-show="is_loading">
 				<ion-spinner class="spinner-custom"></ion-spinner>

@@ -6600,7 +6600,7 @@ $scope.getItineraryLink = function(point1,point2) {
 				})
 			}
 		},
-		controller: function ($scope, $attrs, ratingConfig) {
+		controller: function ($scope, $attrs, FEEDBACK_CONFIG) {
 			var ngModelCtrl;
 			ngModelCtrl = {
 				$setViewValue: angular.noop
@@ -6609,7 +6609,7 @@ $scope.getItineraryLink = function(point1,point2) {
 				var max;
 				ngModelCtrl = ngModelCtrl_;
 				ngModelCtrl.$render = this.render;
-				max = angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : ratingConfig.max;
+				max = angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : FEEDBACK_CONFIG.max;
 				return $scope.range = this.buildTemplateObjects(ngModelCtrl.$modelValue, max);
 			};
 			this.buildTemplateObjects = function (stateValue, max) {
