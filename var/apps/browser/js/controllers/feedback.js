@@ -4,10 +4,10 @@ App.config(function ($stateProvider) {
 		cache: false,
 		url: BASE_PATH + '/feedback/mobile_view/index/value_id/:value_id',
 		controller: 'FeedbackWriteController',
-		// templateUrl: 'templates/feedback/l1/view.html'
+		templateUrl: 'templates/feedback/l1/view.html'
 	});
 	
-}).controller('FeedbackWriteController', function ($rootScope, $ionicModal, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
+}).controller('FeedbackWriteController', function ($rootScope, $ionicModal, $window, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
 	
 	$scope.$on("connectionStateChange", function (event, args) {
 		if (args.isOnline == true && $scope.is_logged_in) {
@@ -35,6 +35,10 @@ App.config(function ($stateProvider) {
 		}).then(function (modal) {
 			Customer.modal = modal;
 			Customer.modal.show();
+			Customer.modal.closeModal = function (result) {
+				Customer.modal.hide();
+				$window.history.back();
+			}
 		});
 	};
 	
