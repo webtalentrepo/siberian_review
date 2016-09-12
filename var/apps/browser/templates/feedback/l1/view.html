@@ -12,10 +12,26 @@
 						</label>
 					</ion-col>
 				</ion-row>
+				<ion-row>
+					<ion-col>
+						<div item-right>
+							Rate
+						</div>
+					</ion-col>
+					<ion-col>
+						<div item-right>
+							<sb-feedback-rating ng-model="rating.rate" max="rating.max"></sb-feedback-rating>
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
+							{{ 'SUBMIT' | translate }}
+						</button>
+					</ion-col>
+				</ion-row>
 			</form>
-			<button type="submit" ng-click="post()" ng-show="!is_loading">
-				{{ 'SUBMIT' | translate }}
-			</button>
 			<div class="loader" ng-show="is_loading">
 				<ion-spinner class="spinner-custom"></ion-spinner>
 			</div>

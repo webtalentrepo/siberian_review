@@ -13571,6 +13571,7 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		});
 		$scope.$on(AUTH_EVENTS.logoutSuccess, function () {
 			$scope.is_logged_in = false;
+			$scope.init();
 			$scope.login();
 		});
 		
@@ -13588,17 +13589,20 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		$scope.init = function () {
 			$scope.is_loading = false;
 			$scope.value_id = Feedback.value_id = $stateParams.value_id;
-			$scope.feedbackData = {};
-			$scope.feedbackData.feedback_content = '';
 			$scope.page_title = '';
 			$scope.customer_id = '';
+			$scope.feedbackData = {};
+			$scope.feedbackData.feedback_content = '';
+			$scope.rating = {};
+			$scope.rating.rate = 0;
+			$scope.rating.max = 5;
 		};
 		$scope.loadContent = function () {
 			$scope.is_loading = true;
-			$scope.feedbackData = {};
-			$scope.feedbackData.feedback_content = '';
 			$scope.page_title = '';
 			$scope.customer_id = '';
+			$scope.feedbackData = {};
+			$scope.feedbackData.feedback_content = '';
 			$scope.value_id = Feedback.value_id = $stateParams.value_id;
 			Feedback.findAll().success(function (data) {
 				if (data.page_title !== '') {
