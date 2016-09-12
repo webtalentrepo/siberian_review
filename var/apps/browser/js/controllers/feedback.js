@@ -26,13 +26,15 @@ App.config(function ($stateProvider) {
 	});
 	
 	$scope.is_logged_in = Customer.isLoggedIn();
-	console.log($scope.is_logged_in);
+	if (!$scope.is_logged_in) {
+		$scope.login();
+	}
 	
-	$scope.login = function() {
+	$scope.login = function () {
 		$ionicModal.fromTemplateUrl('templates/customer/account/l1/login.html', {
 			scope: $scope,
 			animation: 'slide-in-up'
-		}).then(function(modal) {
+		}).then(function (modal) {
 			Customer.modal = modal;
 			Customer.modal.show();
 		});
