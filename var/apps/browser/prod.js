@@ -13496,25 +13496,23 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 }).controller('FeedbackWriteController', function ($rootScope, $ionicModal, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
 	
 	$scope.$on("connectionStateChange", function (event, args) {
-		if (args.isOnline == true) {
+		if (args.isOnline == true && $scope.is_logged_in) {
 			$scope.loadContent();
 		}
 	});
+	
 	$scope.$on(AUTH_EVENTS.loginSuccess, function () {
 		$scope.is_logged_in = true;
 		$scope.init();
 		$scope.loadContent();
 	});
+	
 	$scope.$on(AUTH_EVENTS.logoutSuccess, function () {
 		$scope.is_logged_in = false;
-		$scope.init();
-		$scope.loadContent();
+		$scope.login();
 	});
 	
 	$scope.is_logged_in = Customer.isLoggedIn();
-	if (!$scope.is_logged_in) {
-		$scope.login();
-	}
 	
 	$scope.login = function () {
 		$ionicModal.fromTemplateUrl('templates/customer/account/l1/login.html', {
@@ -13577,6 +13575,14 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 			$scope.is_loading = false;
 		});
 	};
+	
+	if (!$scope.is_logged_in) {
+		$scope.login();
+	} else {
+		$scope.is_logged_in = true;
+		$scope.init();
+		$scope.loadContent();
+	}
 	
 });
 ;App.config(function($stateProvider) {
