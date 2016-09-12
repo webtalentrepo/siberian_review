@@ -4,14 +4,14 @@
 		<div class="container-fluid"><br/></div>
 		<div class="container-fluid" ng-if="is_logged_in">
 			<form name="form" ng-submit="post()">
-				<div class="list">
-					<div>
+				<ion-row>
+					<ion-col>
 						<label class="item item-input item-custom">
-							<textarea rows="3" class="form-control" placeholder="Enter Your Review"
+							<textarea rows="5" class="form-control" placeholder="Enter Your Review"
 							          ng-model="feedbackData.feedback_content"></textarea>
 						</label>
-					</div>
-				</div>
+					</ion-col>
+				</ion-row>
 			</form>
 			<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
 				{{ 'SUBMIT' | translate }}
