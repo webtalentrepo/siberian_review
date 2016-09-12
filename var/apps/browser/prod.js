@@ -13500,7 +13500,6 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 			$scope.loadContent();
 		}
 	});
-	
 	$scope.$on(AUTH_EVENTS.loginSuccess, function () {
 		$scope.is_logged_in = true;
 		$scope.init();
@@ -13513,6 +13512,7 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 	});
 	
 	$scope.is_logged_in = Customer.isLoggedIn();
+	console.log($scope.is_logged_in);
 	
 	$scope.login = function() {
 		$ionicModal.fromTemplateUrl('templates/customer/account/l1/login.html', {
