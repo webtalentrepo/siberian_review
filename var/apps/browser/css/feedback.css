@@ -2,10 +2,10 @@ ul.rating li {
   display: inline;
   border: 0;
   background: none;
-  padding: 3px;
+  padding: 2px;
 }
 ul.rating li i {
-  font-size: 30px;
+  font-size: 20px;
 }
 ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 	color: #e8d834;
