@@ -40,19 +40,19 @@
 				</div>
 				<div class="overall-score"><span class="help-rate">Based on {{ scoreData.rateList.length }} reviews.</span></div>
 			</div>
-			<div class="list rate-list-1">
+			<div class="list rate-list-1" ng-repeat="item in scoreData.rateList" ng-if="scoreData.rateList.length > 0">
 				<div class="list-inline">
-					<div class="rate-list-label">Don Asok</div>
+					<div class="rate-list-label">{{ item.user_name }}</div>
 					<div class="rate-list-score">
-						<sb-feedback-rating readonly="scoreData.readOnly" ng-model="scoreData.overall"
-					                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
+						<sb-feedback-rating readonly="scoreData.readOnly" ng-model="item.feedback_score"
+						                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
 					</div>
 				</div>
 				<div class="list-inline-block">
 					<div class="help-rate">
-						asdf asd fsdaf asdf sadf sdf dsafds af adfjldf sdaf dsa dsafsdj aflsdkfj sdafjsdalf sdfas fsadf sdaf sdf sad
+						{{ item.feedback_content }}
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</ion-content>

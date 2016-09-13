@@ -37,7 +37,7 @@
     },
     {
         "file": "css/feedback.css",
-        "hash": "7371b63d2839767c37a5fd3162950ae7"
+        "hash": "8cc62ba62bde09ed33c9de4a8dae4313"
     },
     {
         "file": "css/ionic.app.min.css",
@@ -321,7 +321,7 @@
     },
     {
         "file": "prod.js",
-        "hash": "e68cc8d188da0cd7967819fd41a05394"
+        "hash": "df8c87c69a6db7d9f7b15926538a8fd1"
     },
     {
         "file": "config.xml",
@@ -577,7 +577,7 @@
     },
     {
         "file": "js/directives/sb-feedback-rating.js",
-        "hash": "64f00ea3772f3b7bb54e978f160bff5a"
+        "hash": "d3c7b3d654cf824daa67b9ce233e6f88"
     },
     {
         "file": "js/directives/sb-tooltip.js",
@@ -717,7 +717,7 @@
     },
     {
         "file": "js/controllers/feedback.js",
-        "hash": "99c021873ac887ec65aad9145fa576b8"
+        "hash": "3d999f6c982fff650f5f56ce2e8d9cc8"
     },
     {
         "file": "js/controllers/folder.js",
@@ -1089,7 +1089,7 @@
     },
     {
         "file": "templates/feedback/l1/view.html",
-        "hash": "246e7baf607dac0b5de9414bd9759e02"
+        "hash": "324d41f2b4e2a1c7b74f8ac68b7a5da8"
     },
     {
         "file": "templates/weather/l1/view.html",
@@ -1457,7 +1457,7 @@
     },
     {
         "file": "prod.css",
-        "hash": "161b0e231835a37e16bc2d33d5100ae9"
+        "hash": "3ecda6cb0b837a219e2064f8f0d1c379"
     },
     {
         "file": "index.html",

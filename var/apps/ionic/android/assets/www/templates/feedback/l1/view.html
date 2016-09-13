@@ -1,21 +1,58 @@
 <ion-view>
 	<ion-nav-title>{{ page_title }}</ion-nav-title>
 	<ion-content sb-background-image>
-		<div class="container-fluid" ng-if="is_logged_in">
+		<div class="input-container" ng-if="is_logged_in">
 			<form name="form" ng-submit="post()">
-				<div class="list">
+				<div class="list rate-list-1">
 					<div>
 						<label class="item item-input item-custom">
-							<textarea rows="3" class="form-control" placeholder="Feedback Content"
+							<textarea rows="5" class="form-control" placeholder="Enter your review"
 							          ng-model="feedbackData.feedback_content"></textarea>
 						</label>
 					</div>
 				</div>
+				<div class="list rate-list-1">
+					<div>
+						<div class="rate-label">Rate</div>
+						<div class="rate-score">
+							<sb-feedback-rating ng-model="feedbackData.feedback_score.rate"
+							                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<div class="list rate-list-0">
+					<button type="submit" class="button button-block button-positive" ng-click="post()" ng-show="!is_loading">
+						{{ 'SUBMIT' | translate }}
+					</button>
+				</div>
 			</form>
-			<button type="submit" class="button button-block button-custom" ng-click="post()" ng-show="!is_loading">{{ 'SUBMIT' | translate }}
-			</button>
 			<div class="loader" ng-show="is_loading">
 				<ion-spinner class="spinner-custom"></ion-spinner>
+			</div>
+			<div class="list overall-score-list">
+				<div class="overall-score-label">
+					Overall Rating
+				</div>
+				<div class="overall-score">
+					<sb-feedback-rating readonly="scoreData.readOnly" ng-model="scoreData.overall"
+					                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
+				</div>
+				<div class="overall-score"><span class="help-rate">Based on {{ scoreData.rateList.length }} reviews.</span></div>
+			</div>
+			<div class="list rate-list-1" ng-repeat="item in scoreData.rateList" ng-if="scoreData.rateList.length > 0">
+				<div class="list-inline">
+					<div class="rate-list-label">{{ item.user_name }}</div>
+					<div class="rate-list-score">
+						<sb-feedback-rating readonly="scoreData.readOnly" ng-model="item.feedback_score"
+						                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
+					</div>
+				</div>
+				<div class="list-inline-block">
+					<div class="help-rate">
+						{{ item.feedback_content }}
+					</div>
+				</div>
 			</div>
 		</div>
 	</ion-content>
