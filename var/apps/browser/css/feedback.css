@@ -28,6 +28,10 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 }
 
 .rate-list-0 {
+	margin:0.5em 0.5em;
+}
+
+.overall-score {
 	text-align: right;
 	margin-right: 0;
 }
