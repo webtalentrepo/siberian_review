@@ -1,7 +1,7 @@
 App.directive('sbFeedbackRating', ['$timeout', function ($timeout) {
 	return {
 		restrict: 'EA',
-		require: ['rating', 'ngModel'],
+		require: ['sbFeedbackRating', 'ngModel'],
 		scope: {
 			readonly: '=?'
 		},
@@ -17,7 +17,7 @@ App.directive('sbFeedbackRating', ['$timeout', function ($timeout) {
 				})
 			}
 		},
-		controller: function ($scope, $attrs, ratingConfig) {
+		controller: function ($scope, $attrs, FEEDBACK_CONFIG) {
 			var ngModelCtrl;
 			ngModelCtrl = {
 				$setViewValue: angular.noop
@@ -26,7 +26,7 @@ App.directive('sbFeedbackRating', ['$timeout', function ($timeout) {
 				var max;
 				ngModelCtrl = ngModelCtrl_;
 				ngModelCtrl.$render = this.render;
-				max = angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : ratingConfig.max;
+				max = angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : FEEDBACK_CONFIG.max;
 				return $scope.range = this.buildTemplateObjects(ngModelCtrl.$modelValue, max);
 			};
 			this.buildTemplateObjects = function (stateValue, max) {

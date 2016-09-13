@@ -13612,7 +13612,8 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 					$scope.page_title = data.page_title;
 				}
 				$scope.customer_id = data.customer_id;
-				$scope.feedbackData.feedback_content = data.feedback_content;
+				$scope.scoreData.overall = data.overall;
+				$scope.scoreData.rateList = data.rateList;
 			}).error(function () {
 			}).finally(function () {
 				$scope.is_loading = false;
@@ -13620,15 +13621,26 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 			
 		};
 		$scope.post = function () {
+			if (!$scope.is_logged_in) {
+				$scope.login();
+				return;
+			}
+			if ($scope.feedbackData.feedback_content === '' || $scope.feedbackData.feedback_content === null || $scope.feedbackData.feedback_content === undefined) {
+				Dialog.alert($translate.instant('Error'), 'Please insert your review content.', $translate.instant('OK'));
+				return;
+			}
 			$scope.feedbackData = {
 				'customer_id': $scope.customer_id,
 				'value_id': $scope.value_id,
-				'feedback_content': $scope.feedbackData.feedback_content
+				'feedback_content': $scope.feedbackData.feedback_content,
+				'feedback_score': $scope.feedbackData.feedback_score.rate
 			};
 			$scope.is_loading = true;
 			Feedback.post($scope.feedbackData).success(function (data) {
 				if (data.success) {
 					Dialog.alert('', data.message, $translate.instant('OK'));
+					$scope.init();
+					$scope.loadContent();
 				}
 			}).error(function (data) {
 				if (data && angular.isDefined(data.message)) {
@@ -13647,7 +13659,6 @@ App.config(function($stateProvider, HomepageLayoutProvider) {
 		}
 	}
 ]);
-
 ;App.config(function($stateProvider) {
 
     $stateProvider.state('video-list', {
