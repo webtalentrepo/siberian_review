@@ -30,21 +30,15 @@
 			<div class="loader" ng-show="is_loading">
 				<ion-spinner class="spinner-custom"></ion-spinner>
 			</div>
-			<div class="list rate-list-1">
-				<div>
-					<div class="rate-score">
-						Overall Rating
-					</div>
+			<div class="list" style="margin-right: 0.5em;">
+				<div style="text-align: right;margin-right: 0;">
+					Overall Rating
 				</div>
-				<div class="overall-score-list">
-					<div class="overall-score">
-						<sb-feedback-rating readonly="scoreData.readOnly" ng-model="scoreData.overall"
-						                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
-					</div>
+				<div style="text-align: right;margin-right: 0;">
+					<sb-feedback-rating readonly="scoreData.readOnly" ng-model="scoreData.overall"
+					                    max="feedbackData.feedback_score.max"></sb-feedback-rating>
 				</div>
-				<div class="overall-score-list">
-					<span>Based on {{ scoreData.rateList.length }} reviews.</span>
-				</div>
+				<div style="text-align: right;margin-right: 0;font-size:11px;">Based on {{ scoreData.rateList.length }} reviews.</div>
 			</div>
 		</div>
 	</ion-content>
