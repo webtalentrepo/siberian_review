@@ -23,9 +23,28 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 			}
 			$data["customer_id"] = $customer_id;
 			$feedback = $option->getObject();
-			$rows = $feedback->findAll()->toArray();
+			$rows = $feedback->findAll(null, array('updated_at DESC'))->toArray();
 			print_r($rows);
 			exit;
+			$data["overall"] = 0;
+			$rateList = array();
+			if (sizeof($rows) > 0) {
+				$customer = new Customer_Model_Customer();
+				$score_sum = 0;
+				foreach ($rows as $key => $row) {
+					$rateList[$key] = array();
+					$rateList[$key]['feedback_content'] = $row['feedback_content'];
+					$rateList[$key]['feedback_score'] = $row['feedback_score'] * 1;
+					$customer->find($customer_id);
+					if (!$customer->getId()) {
+						$rateList[$key]['user_name'] = '';
+					} else {
+						$rateList[$key]['user_name'] = ($customer->getData('firstname') . ' ' . $customer->getData('lastname'));
+					}
+					$score_sum += $row['feedback_score'] * 1;
+				}
+				$data["overall"] = round((($score_sum * 1) / sizeof($rows)), 1);
+			}
 			$this->_sendHtml($data);
 		}
 	}
