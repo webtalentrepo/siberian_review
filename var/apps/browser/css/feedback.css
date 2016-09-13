@@ -28,21 +28,17 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 }
 
 .rate-list-0 {
-	margin: 0.5em 0.5em;
-}
-
-.overall-score {
-	float: right;
+	text-align: right;
+	margin-right: 0;
 }
 
 .overall-score ul.rating li i {
 	font-size: 18px;
 }
 
-.overall-score-list {
-	margin: 0.1em 0.5em;
+.overall-score .help-rate {
+	font-size: 11px;
 }
-
-.overall-score-list span {
-	font-size: 16px;
+.overall-score-list {
+	margin-right: 0.5em;
 }
