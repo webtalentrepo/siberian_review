@@ -61,7 +61,6 @@ App.config(function ($stateProvider) {
 					$scope.page_title = data.page_title;
 				}
 				$scope.customer_id = data.customer_id;
-				$scope.feedbackData.feedback_content = data.feedback_content;
 			}).error(function () {
 			}).finally(function () {
 				$scope.is_loading = false;
@@ -78,6 +77,8 @@ App.config(function ($stateProvider) {
 			Feedback.post($scope.feedbackData).success(function (data) {
 				if (data.success) {
 					Dialog.alert('', data.message, $translate.instant('OK'));
+					$scope.init();
+					$scope.loadContent();
 				}
 			}).error(function (data) {
 				if (data && angular.isDefined(data.message)) {
