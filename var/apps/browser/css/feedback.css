@@ -28,7 +28,7 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 }
 
 .rate-list-0 {
-	margin:0.5em 0.5em;
+	margin: 0.5em 0.5em;
 }
 
 .overall-score {
@@ -43,6 +43,29 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 .help-rate {
 	font-size: 11px;
 }
+
 .overall-score-list {
 	margin-right: 0.5em;
+}
+
+.rate-list-label {
+	font-size: 18px;
+	font-weight: bold;
+	float: left;
+}
+
+.rate-list-score {
+	float: right;
+}
+
+.rate-list-score ul.rating li i {
+	font-size: 20px;
+}
+
+.list-inline {
+	display: inline;
+}
+
+.list-inline-block {
+	display: inline-block;
 }
