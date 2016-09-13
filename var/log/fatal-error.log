@@ -4420,3 +4420,63 @@ Array
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Array
+(
+    [type] => 32
+    [message] => Module 'mcrypt' already loaded
+    [file] => Unknown
+    [line] => 0
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Array
+(
+    [type] => 8192
+    [message] => Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead.
+    [file] => Unknown
+    [line] => 0
+)
+
+
