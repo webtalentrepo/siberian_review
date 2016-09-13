@@ -78,13 +78,11 @@ App.config(function ($stateProvider) {
 				Dialog.alert($translate.instant('Error'), 'Please insert your review content.', $translate.instant('OK'));
 				return;
 			}
-			console.log($scope.feedbackData.feedback_score.rate * 1);
-			return;
 			$scope.feedbackData = {
 				'customer_id': $scope.customer_id,
 				'value_id': $scope.value_id,
 				'feedback_content': $scope.feedbackData.feedback_content,
-				'feedback_score': ($scope.feedbackData.feedback_score.rate * 1)
+				'feedback_score': $scope.feedbackData.feedback_score.rate
 			};
 			$scope.is_loading = true;
 			Feedback.post($scope.feedbackData).success(function (data) {

@@ -71,7 +71,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 						'value_id' => $data['value_id'],
 						'customer_id' => $data['customer_id'],
 						'feedback_content' => $data['feedback_content'],
-						'feedback_score' => $data['feedback_score'],
+						'feedback_score' => ($data['feedback_score'] * 1),
 						'created_at' => date('Y-m-d H:i:s'),
 						'updated_at' => date('Y-m-d H:i:s')
 					);
@@ -80,7 +80,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 					$row = $r->toArray();
 					$updateData = array(
 						'feedback_content' => $data['feedback_content'],
-						'feedback_score' => $data['feedback_score'],
+						'feedback_score' => ($data['feedback_score'] * 1),
 						'updated_at' => date('Y-m-d H:i:s')
 					);
 					$where = array('feedback_id = ?' => $row['feedback_id']);
