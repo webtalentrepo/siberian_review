@@ -24,8 +24,6 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 			$data["customer_id"] = $customer_id;
 			$feedback = $option->getObject();
 			$rows = $feedback->findAll(null, array('updated_at DESC'))->toArray();
-			print_r($rows);
-			exit;
 			$data["overall"] = 0;
 			$rateList = array();
 			if (sizeof($rows) > 0) {
@@ -45,6 +43,8 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 				}
 				$data["overall"] = round((($score_sum * 1) / sizeof($rows)), 1);
 			}
+			print_r($data);
+			exit;
 			$this->_sendHtml($data);
 		}
 	}
