@@ -8,8 +8,6 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 			
 			$data = array();
 			$option = $this->getCurrentOptionValue();
-			$feedback = $option->getObject();
-			
 			$data["page_title"] = $option->getTabbarName();
 			$customer_id = $this->getSession()->getCustomerId();
 			if (empty($customer_id)) {
@@ -23,23 +21,11 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 					}
 				}
 			}
-			$customer = new Customer_Model_Customer();
-			$customer->find($customer_id);
-			if (!$customer->getId()) {
-				$data["current_user"] = '';
-				$data["customer_id"] = '';
-				$data["feedback_content"] = '';
-			} else {
-				$data["current_user"] = $customer->getData('email');
-				$data["customer_id"] = $customer->getId();
-				$r = $feedback->findByCustomerId($value_id, $data["customer_id"]);
-				if (!$r) {
-					$data["feedback_content"] = '';
-				} else {
-					$rowArray = $r->toArray();
-					$data["feedback_content"] = $rowArray["feedback_content"];
-				}
-			}
+			$data["customer_id"] = $customer_id;
+			$feedback = $option->getObject();
+			$rows = $feedback->findAll()->toArray();
+			print_r($rows);
+			exit;
 			$this->_sendHtml($data);
 		}
 	}
@@ -67,6 +53,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 						'value_id' => $data['value_id'],
 						'customer_id' => $data['customer_id'],
 						'feedback_content' => $data['feedback_content'],
+						'feedback_score' => $data['feedback_score'],
 						'created_at' => date('Y-m-d H:i:s'),
 						'updated_at' => date('Y-m-d H:i:s')
 					);
@@ -75,6 +62,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 					$row = $r->toArray();
 					$updateData = array(
 						'feedback_content' => $data['feedback_content'],
+						'feedback_score' => $data['feedback_score'],
 						'updated_at' => date('Y-m-d H:i:s')
 					);
 					$where = array('feedback_id = ?' => $row['feedback_id']);
