@@ -15,6 +15,7 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 
 .rate-label {
 	font-size: 20px;
+	font-weight: bold;
 	float: left;
 	margin: 4px 0 0 40%;
 }
@@ -29,6 +30,12 @@ ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
 
 .rate-list-0 {
 	margin: 0.5em 0.5em;
+}
+
+.overall-score-label {
+	font-weight: bold;
+	text-align: right;
+	margin-right: 0;
 }
 
 .overall-score {
