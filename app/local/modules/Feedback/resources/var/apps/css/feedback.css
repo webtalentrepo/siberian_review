@@ -1,9 +1,78 @@
 ul.rating li {
-  display: inline;
-  border: 0px;
-  background: none;
-  padding: 5px 10px;
+	display: inline;
+	border: 0;
+	background: none;
+	padding: 1px;
 }
+
 ul.rating li i {
-  font-size: 30px;
+	font-size: 24px;
+}
+
+ul.rating li i.ion-ios-star, ul.rating li i.ion-ios-star-half {
+	color: #e8d834;
+}
+
+.rate-label {
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+	margin: 4px 0 0 40%;
+}
+
+.rate-score {
+	float: right;
+}
+
+.rate-list-1 {
+	margin: 1em 0.5em;
+}
+
+.rate-list-0 {
+	margin: 0.5em 0.5em;
+}
+
+.overall-score-label {
+	font-weight: bold;
+	text-align: right;
+	margin-right: 0;
+}
+
+.overall-score {
+	text-align: right;
+	margin-right: 0;
+}
+
+.overall-score ul.rating li i {
+	font-size: 20px;
+}
+
+.help-rate {
+	font-size: 11px;
+}
+
+.overall-score-list {
+	margin-right: 0.5em;
+}
+
+.rate-list-label {
+	font-size: 18px;
+	font-weight: bold;
+	float: left;
+}
+
+.rate-list-score {
+	float: right;
+}
+
+.rate-list-score ul.rating li i {
+	font-size: 20px;
+}
+
+.list-inline {
+	display: inline;
+}
+
+.list-inline-block {
+	display: inline-block;
 }

@@ -10,6 +10,7 @@ App.config(function ($stateProvider) {
 	function ($rootScope, $ionicModal, $window, $scope, $stateParams, $translate, Customer, Dialog, Feedback, AUTH_EVENTS) {
 		$scope.$on("connectionStateChange", function (event, args) {
 			if (args.isOnline == true && $scope.is_logged_in) {
+				$scope.init();
 				$scope.loadContent();
 			}
 		});
@@ -20,6 +21,7 @@ App.config(function ($stateProvider) {
 		});
 		$scope.$on(AUTH_EVENTS.logoutSuccess, function () {
 			$scope.is_logged_in = false;
+			$scope.init();
 			$scope.login();
 		});
 		
@@ -37,22 +39,28 @@ App.config(function ($stateProvider) {
 		$scope.init = function () {
 			$scope.is_loading = false;
 			$scope.value_id = Feedback.value_id = $stateParams.value_id;
-			$scope.feedbackData = {};
-			$scope.feedbackData.feedback_content = '';
 			$scope.page_title = '';
 			$scope.customer_id = '';
+			$scope.feedbackData = {};
+			$scope.feedbackData.feedback_content = '';
+			$scope.feedbackData.feedback_score = {};
+			$scope.feedbackData.feedback_score.rate = 0;
+			$scope.feedbackData.feedback_score.max = 5;
+			$scope.scoreData = {};
+			$scope.scoreData.overall = 0;
+			$scope.scoreData.readOnly = true;
+			$scope.scoreData.rateList = [];
 		};
 		$scope.loadContent = function () {
 			$scope.is_loading = true;
-			$scope.feedbackData = {};
-			$scope.feedbackData.feedback_content = '';
-			$scope.page_title = '';
-			$scope.customer_id = '';
 			$scope.value_id = Feedback.value_id = $stateParams.value_id;
 			Feedback.findAll().success(function (data) {
-				$scope.page_title = data.page_title;
+				if (data.page_title !== '') {
+					$scope.page_title = data.page_title.toUpperCase();
+				} else {
+					$scope.page_title = data.page_title;
+				}
 				$scope.customer_id = data.customer_id;
-				$scope.feedbackData.feedback_content = data.feedback_content;
 			}).error(function () {
 			}).finally(function () {
 				$scope.is_loading = false;
@@ -67,11 +75,10 @@ App.config(function ($stateProvider) {
 			};
 			$scope.is_loading = true;
 			Feedback.post($scope.feedbackData).success(function (data) {
-				$scope.feedbackData = {};
 				if (data.success) {
 					Dialog.alert('', data.message, $translate.instant('OK'));
+					$scope.init();
 					$scope.loadContent();
-					// $scope.closeFeedbackModal();
 				}
 			}).error(function (data) {
 				if (data && angular.isDefined(data.message)) {
