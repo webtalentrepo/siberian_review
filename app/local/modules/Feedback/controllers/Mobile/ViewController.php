@@ -33,7 +33,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 					$rateList[$key] = array();
 					$rateList[$key]['feedback_content'] = $row['feedback_content'];
 					$rateList[$key]['feedback_score'] = $row['feedback_score'] * 1;
-					$customer->find($customer_id);
+					$customer->find($row['customer_id']);
 					if (!$customer->getId()) {
 						$rateList[$key]['user_name'] = '';
 					} else {
