@@ -61,6 +61,8 @@ App.config(function ($stateProvider) {
 					$scope.page_title = data.page_title;
 				}
 				$scope.customer_id = data.customer_id;
+				$scope.scoreData.overall = data.overall;
+				$scope.scoreData.rateList = data.rateList;
 			}).error(function () {
 			}).finally(function () {
 				$scope.is_loading = false;
