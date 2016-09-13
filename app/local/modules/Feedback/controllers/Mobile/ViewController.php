@@ -43,6 +43,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 				}
 				$data["overall"] = round((($score_sum * 1) / sizeof($rows)), 1);
 			}
+			$data["rateList"] = $rateList;
 			print_r($data);
 			exit;
 			$this->_sendHtml($data);
