@@ -23,7 +23,7 @@ class Feedback_Mobile_ViewController extends Application_Controller_Mobile_Defau
 			}
 			$data["customer_id"] = $customer_id;
 			$feedback = $option->getObject();
-			$rows = $feedback->findAll(null, array('updated_at DESC'))->toArray();
+			$rows = $feedback->findAll(array('value_id = ?' => $value_id), array('updated_at DESC'))->toArray();
 			$data["overall"] = 0;
 			$rateList = array();
 			if (sizeof($rows) > 0) {
